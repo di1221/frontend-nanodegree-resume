@@ -10,7 +10,7 @@ var bio = {
         "location" : "Washington, DC"
       },
     "pictureUrl" : "images/lincoln-coin.png",
-    "welcomeMsg" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. ",
+    "welcomeMsg" : "Those who deny freedom to others deserve it not for themselves. ",
     "skills" : ["Law", " Farming", " Store Proprietor", " Politics", " Inventing", " Speech Writing", " A whole lot of other stuff"]
   };
 var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
@@ -20,8 +20,8 @@ var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
 var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
 var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
 var formattedBioPic = HTMLbioPic.replace("%data%", bio.pictureUrl);
-var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMsg);
 var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
+var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMsg);
 var formattedSkillsStart = HTMLskillsStart;
 var formattedSkills = HTMLskills.replace("%data%", bio.skills);
 
@@ -32,8 +32,8 @@ $("#header").append(formattedMobile);
 $("#header").append(formattedEmail);
 $("#header").append(formattedGithub);
 $("#header").prepend(formattedBioPic);
-$("#header").append(formattedWelcomeMsg);
 $("#header").append(formattedLocation);
+$("#header").append(formattedWelcomeMsg);
 $("#header").append(formattedSkillsStart);
 $("#header").append(formattedSkills);
 
@@ -50,7 +50,6 @@ function inName(name) {
 }
 $("#header").prepend(internationalizeButton);
 $("#mapDiv").append(googleMap);
-
 
 //initializeMap();
 
@@ -150,7 +149,6 @@ education.display = function () {
 
   }
 
-
   for (onlineClass in education.onlineClasses) {
 
 		var formattedOnlineClasses = HTMLonlineClasses;
@@ -195,8 +193,6 @@ var projects = {
 
 projects.display = function() {
 
-
-
 	for(project in projects.projects){
 		var formattedProjectStart = HTMLprojectStart;
 		var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
@@ -225,16 +221,6 @@ $("#letsConnect").append("<img src='images/Linkedin-60_sm.png' width='60px' heig
 $("#letsConnect").append("<img src='images/Twitter-60_sm.png' width='60px' height='60px' alt='Twitter Icon'>");
 $("#letsConnect").append("<img src='images/Pinterest-60_sm.png' width='60px' height='60px' alt='Pinterest Icon'>");
 
-
-/* ---version used  in class example ---
-function inName(name){
-	name = name.trim().split(" ");
-	name[1] = name[1].toUpperCase();
-	name[0] = name[0].slice(0,1).toUpperCase() +
-		name[0].slice(1).toLowerCase();
-	return name[0] + " " + name[1];
-}
-*/
 
 
 

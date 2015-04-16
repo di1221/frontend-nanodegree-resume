@@ -1,0 +1,8 @@
+list of resources used for project (not and exhaustive list)
+
+jquery.com
+developer.mozilla.org
+stackoverflow.com
+help.github.com
+blog.udemy.com
+www.w3schools.com

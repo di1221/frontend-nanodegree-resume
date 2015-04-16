@@ -11,31 +11,43 @@ var bio = {
       },
     "pictureUrl" : "images/lincoln-coin.png",
     "welcomeMsg" : "Those who deny freedom to others deserve it not for themselves. ",
-    "skills" : ["Law", " Farming", " Store Proprietor", " Politics", " Inventing", " Speech Writing", " A whole lot of other stuff"]
+    "skills" : ["Law", "Farming", "Store Proprietor", "Politics", "Speech Writing"]
   };
-var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-var formattedName =  HTMLheaderName.replace("%data%", bio.names);
 
-var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
-var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
-var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
-var formattedBioPic = HTMLbioPic.replace("%data%", bio.pictureUrl);
-var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
-var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMsg);
-var formattedSkillsStart = HTMLskillsStart;
-var formattedSkills = HTMLskills.replace("%data%", bio.skills);
+bio.display = function () {
+	var formattedName =  HTMLheaderName.replace("%data%", bio.names);
+	var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+	var formattedBioPic = HTMLbioPic.replace("%data%", bio.pictureUrl);
 
-$("#header").prepend(formattedRole);
-$("#header").prepend(formattedName);
+	$("#header").prepend(formattedRole);
+	$("#header").prepend(formattedName);
+	$("#header").prepend(formattedBioPic);
 
-$("#header").append(formattedMobile);
-$("#header").append(formattedEmail);
-$("#header").append(formattedGithub);
-$("#header").prepend(formattedBioPic);
-$("#header").append(formattedLocation);
-$("#header").append(formattedWelcomeMsg);
-$("#header").append(formattedSkillsStart);
-$("#header").append(formattedSkills);
+	var formattedContactInfo = [];
+	formattedContactInfo.push(HTMLemail.replace("%data%", bio.contacts.email));
+	formattedContactInfo.push(HTMLgithub.replace("%data%", bio.contacts.github));
+	formattedContactInfo.push(HTMLlocation.replace("%data%", bio.contacts.location));
+	formattedContactInfo.push(HTMLmobile.replace("%data%", bio.contacts.mobile));
+
+	for(i in formattedContactInfo) {
+		$("#topContacts").append(formattedContactInfo[i]);
+	}
+
+	var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMsg);
+	var formattedSkillsStart = HTMLskillsStart;
+	var formattedSkills = bio.skills.slice(",");
+	var formattedSkillsList = [];
+
+
+	$("#header").append(formattedWelcomeMsg);
+	for(i in formattedSkills){
+	  formattedSkillsList.push(HTMLskills.replace("%data%", bio.skills[i]));
+	}
+	  $("#header").append(formattedSkillsStart);
+	  $("#skills").append(formattedSkillsList);
+};
+bio.display();
+
 
 
 /* for button option to internationalize name on resume */
@@ -135,11 +147,11 @@ education.display = function () {
   $("#education").append(formattedSchoolStart);
 
   for (school in education.schools) {
-		var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
-		var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
-		var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
-		var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
-		var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
+	var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
+	var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+	var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+	var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+	var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
 
     $(".education-entry").append(formattedSchoolName);
     $(".education-entry:last").append(formattedSchoolLocation);
@@ -178,7 +190,6 @@ var projects = {
 				"images/civil_war.jpeg"
 			],
 		},
-
 		{
 			"title": "Presidential Campaign",
 			"dates": "1860 - 1861",
@@ -201,7 +212,6 @@ projects.display = function() {
 
 
 		$("#projects").append(formattedProjectStart);
-		//$(".project-entry:last").append(formattedProjectStart);
 	    $(".project-entry:last").append(formattedProjectTitle);
 		$(".project-entry:last").append(formattedProjectDates);
 		$(".project-entry:last").append(formattedProjectDescription);
@@ -215,14 +225,11 @@ projects.display = function() {
 }
 projects.display();
 
-/* Footer */
-$("#letsConnect").append("<img src='images/facebook-60_sm.png' width='60x' height='60px' alt='facebook icon'>");
-$("#letsConnect").append("<img src='images/Linkedin-60_sm.png' width='60px' height='60px' alt='LinkedIn Icon'>");
-$("#letsConnect").append("<img src='images/Twitter-60_sm.png' width='60px' height='60px' alt='Twitter Icon'>");
-$("#letsConnect").append("<img src='images/Pinterest-60_sm.png' width='60px' height='60px' alt='Pinterest Icon'>");
-
-
-
+/* Lets Connect footer contacts*/
+$("#footerContacts").append("<a href='http://www.facebook.com' target='_blank'><img src='images/facebook-60_sm.png' width='60x' height='60px' alt='facebook icon'></a>");
+$("#footerContacts").append("<a href='http://www.linkIn.com' target='_blank'><img src='images/Linkedin-60_sm.png' width='60px' height='60px' alt='LinkedIn Icon'></a>");
+$("#footerContacts").append("<a href='http://www.twitter.com' target='_blank'><img src='images/Twitter-60_sm.png' width='60px' height='60px' alt='Twitter Icon'></a>");
+$("#footerContacts").append("<a href='http://www.Pinterest.com' target='_blank'><img src='images/Pinterest-60_sm.png' width='60px' height='60px' alt='Pinterest Icon'></a>");
 
 
 

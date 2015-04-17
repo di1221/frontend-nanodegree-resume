@@ -21,8 +21,6 @@ bio.display = function () {
 
 	$("#header").prepend(formattedRole);
 	$("#header").prepend(formattedName);
-	$("#header").prepend(formattedBioPic);
-
 	var formattedContactInfo = [];
 	formattedContactInfo.push(HTMLemail.replace("%data%", bio.contacts.email));
 	formattedContactInfo.push(HTMLgithub.replace("%data%", bio.contacts.github));
@@ -38,13 +36,13 @@ bio.display = function () {
 	var formattedSkills = bio.skills.slice(",");
 	var formattedSkillsList = [];
 
-
+	$("#header").append(formattedBioPic);
 	$("#header").append(formattedWelcomeMsg);
 	for(i in formattedSkills){
 	  formattedSkillsList.push(HTMLskills.replace("%data%", bio.skills[i]));
 	}
 	  $("#header").append(formattedSkillsStart);
-	  $("#skills").append(formattedSkillsList);
+	  $("#header").append(formattedSkillsList);
 };
 bio.display();
 
